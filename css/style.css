@@ -1,0 +1,21 @@
+ /*.form-group{
+    margin: 0 auto;
+    border: 4px solid skyblue;
+    background-color:rgba(57, 141, 237,.55) ;
+}
+.btn {
+    background-color:rgb(97, 104, 212)
+}
+h1 {
+    font-weight: bold;
+    text-align: center;
+}*/
+
+
+.invalid-form-alert {
+    display: block;
+
+} 
+.hide-alert {
+    display: none;
+}
