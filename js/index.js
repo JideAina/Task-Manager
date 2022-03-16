@@ -44,3 +44,6 @@ const validFormFieldInput = (event) => {
         console.log(`name: ${name} description: ${description} assigned: ${assigned} due date: ${dueDate} status: ${status}`);
     }
 }
+
+const taskManager = new TaskManager()
+console.log(taskManager.tasks);
