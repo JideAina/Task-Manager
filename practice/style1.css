@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background: rgb(92, 216, 123);
+    color:white;
+    min-height: 100vh;
+}
+
+header,form{
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-list{
+    min-width: 30%;
+}
+
+.todo{
+    background: white;
+    color: black;
+    padding: 3rem;
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+.btn-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+}
