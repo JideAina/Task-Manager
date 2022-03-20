@@ -1,6 +1,6 @@
-const createTaskHtml = (name,description,assigned,date,status) => {
+const createTaskHtml = (name,description,assigned,date,status,id) => {
     const html = `
-    <li class="list-group-item w-25 mb-3">
+    <li class="list-group-item w-25 mb-3" id=${id}>
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
             <h5>${name}</h5>
             <span class="badge badge-danger">${status}</span>
@@ -10,7 +10,7 @@ const createTaskHtml = (name,description,assigned,date,status) => {
             <small>Due: ${date}</small>
         </div>
         <p>${description}</p>
-        <button class="done-button btn btn-primary">Mark As Done</button>
+        <button class="done-button btn btn-primary" type="button">Mark As Done</button>
     </li>
     `
     return html;
@@ -27,11 +27,13 @@ class TaskManager {
         // this.currentId = 0;
         this.currentId = currentId;
     }
+
+  
     
     addTask(name,description,assigned,date,status = "TODO"){
         this.currentId++;
         const newTask = {
-            id : this.currentId,
+            id: this.currentId,
             name: name,
             description : description,
             assignedTo : assigned,
@@ -49,7 +51,7 @@ class TaskManager {
             // console.log(currentTask.date)
             let currentDate = new Date(currentTask.date);
             let formattedDate = currentDate.toDateString();
-            let taskHtml = createTaskHtml(currentTask.name,currentTask.description,currentTask.assignedTo,formattedDate,currentTask.status);
+            let taskHtml = createTaskHtml(currentTask.name,currentTask.description,currentTask.assignedTo,formattedDate,currentTask.status,currentTask.id);
 
             tasksHtmlList.push(taskHtml)
 
@@ -62,5 +64,19 @@ class TaskManager {
         taskList.innerHTML = tasksHtml;
     }
 
+    getTaskById(taskId){
+        let foundTask;
+        for (let i = 0; i < this.tasks.length; i++){
+            let task = this.tasks[i];
+            if(taskId === task.id){
+                foundTask = task;
+            }
+        }
+
+        return foundTask;
+    }
+
 
 }
+
+

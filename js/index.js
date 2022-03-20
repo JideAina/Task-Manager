@@ -10,6 +10,7 @@ const statusInput = document.querySelector('#status');
 // const status = statusInput.value;
 const alert = document.querySelector('#alert');
 const newTaskForm = document.getElementById('form');
+const taskManager = new TaskManager();
 
 
 const validFormFieldInput = () => {
@@ -49,7 +50,7 @@ const validFormFieldInput = () => {
 
 
 }
-const taskManager = new TaskManager();
+
 
 newTaskForm.addEventListener('submit',function(e){
     e.preventDefault();
@@ -59,8 +60,8 @@ newTaskForm.addEventListener('submit',function(e){
         
         taskManager.addTask(nameInput.value,descriptionInput.value,assignedInput.value,dueDateInput.value,statusInput.value);
         // console.log(taskManager.tasks);
+        
         taskManager.render();
-
         nameInput.value = '';
         descriptionInput.value = '';
         assignedInput.value = '';
@@ -72,13 +73,22 @@ newTaskForm.addEventListener('submit',function(e){
 
 const taskList = document.querySelector('#taskList');
 taskList.addEventListener('click',function(event){
-    event.preventDefault;
     const item = event.target;
     if(item.classList.contains('done-button')){
         const parentTask = item.parentElement;
-        console.log(parentTask)
+        const taskId = parseInt(parentTask.id);
+        const task = taskManager.getTaskById(taskId);
+        task.status = 'DONE';
+        taskManager.render();
+
+        // const btn = document.querySelector('.done-button');
+        // if()
     }
-})
+
+    
+});
+
+
 
 
 
