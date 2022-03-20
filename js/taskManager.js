@@ -84,6 +84,13 @@ class TaskManager {
         let currentId = JSON.stringify(this.currentId); 
         localStorage.setItem('currentId', JSON.stringify(currentId));
     }
+
+    load(){
+        localStorage.getItem('tasks', JSON.stringify(this.tasks));
+        this.tasks = JSON.parse(localStorage.getItem('tasks'));
+        localStorage.getItem('currentId', JSON.stringify(this.currentId));
+        this.currentId = JSON.parse(localStorage.getItem('currentId'));
+    }
 }
 
 
