@@ -1,6 +1,6 @@
 const createTaskHtml = (name,description,assigned,date,status) => {
     const html = `
-    <li class="list-group-item">
+    <li class="list-group-item w-25 mb-3">
         <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
             <h5>${name}</h5>
             <span class="badge badge-danger">${status}</span>
@@ -10,6 +10,7 @@ const createTaskHtml = (name,description,assigned,date,status) => {
             <small>Due: ${date}</small>
         </div>
         <p>${description}</p>
+        <button class="done-button btn btn-primary">Mark As Done</button>
     </li>
     `
     return html;
@@ -44,14 +45,22 @@ class TaskManager {
     render(){
         let tasksHtmlList = [];
         for(let i = 0; i < this.tasks.length; i++){
-            let currentTask = this.task[i];
-            let currentDate = new Date(currentTask[date]);
+            let currentTask = this.tasks[i];
+            // console.log(currentTask.date)
+            let currentDate = new Date(currentTask.date);
             let formattedDate = currentDate.toDateString();
-            let taskHtml = createTaskHtml(currentTask.name,currentTask.description,currentTask.assigned,formattedDate,currentTask.status);
+            let taskHtml = createTaskHtml(currentTask.name,currentTask.description,currentTask.assignedTo,formattedDate,currentTask.status);
 
             tasksHtmlList.push(taskHtml)
 
 
         }
+
+        const tasksHtml = tasksHtmlList.join('\n')
+        const taskList = document.getElementById('taskList');
+
+        taskList.innerHTML = tasksHtml;
     }
+
+
 }
