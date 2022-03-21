@@ -6,15 +6,16 @@ const assignedInput = document.querySelector('#assigned');
 // const assigned = assignedInput.value;
 const dueDateInput = document.querySelector('#due_date');
 // const dueDate = dueDateInput.value;
-const statusInput = document.querySelector('#status');
 // const status = statusInput.value;
 const alert = document.querySelector('#alert');
 const newTaskForm = document.getElementById('form');
 const taskManager = new TaskManager();
+taskManager.load();
+taskManager.render();
 
 
 const validFormFieldInput = () => {
-    if (!nameInput.value || !descriptionInput.value || !assignedInput.value || !dueDateInput.value || !statusInput.value) {
+    if (!nameInput.value || !descriptionInput.value || !assignedInput.value || !dueDateInput.value) {
         let errorList = [];
         if (!nameInput.value) {
             errorList.push(" name");
@@ -27,9 +28,6 @@ const validFormFieldInput = () => {
         }
         if (!dueDateInput.value) {
             errorList.push(" due date");
-        }
-        if (!statusInput.value) {
-            errorList.push(" status");
         }
         alert.classList.add("invalid-form-alert");
         alert.classList.remove("hide-alert");
@@ -44,7 +42,7 @@ const validFormFieldInput = () => {
         if (!alert.classList.contains("hide-alert")) {
             alert.classList.add("hide-alert");
         }
-        console.log(`name: ${nameInput.value} description: ${descriptionInput.value} assigned: ${assignedInput.value} due date: ${dueDateInput.value} status: ${statusInput.value}`);
+        console.log(`name: ${nameInput.value} description: ${descriptionInput.value} assigned: ${assignedInput.value} due date: ${dueDateInput.value}`);
         return true;
     }
 
@@ -58,7 +56,7 @@ newTaskForm.addEventListener('submit',function(e){
     
     if(isFormValidation){
         
-        taskManager.addTask(nameInput.value,descriptionInput.value,assignedInput.value,dueDateInput.value,statusInput.value);
+        taskManager.addTask(nameInput.value,descriptionInput.value,assignedInput.value,dueDateInput.value);
         // console.log(taskManager.tasks);
         
         taskManager.render();
@@ -66,7 +64,6 @@ newTaskForm.addEventListener('submit',function(e){
         descriptionInput.value = '';
         assignedInput.value = '';
         dueDateInput.value = '';
-        statusInput.value = '';
     }
     
 });
@@ -75,16 +72,25 @@ const taskList = document.querySelector('#taskList');
 taskList.addEventListener('click',function(event){
     const item = event.target;
     if(item.classList.contains('done-button')){
-        const parentTask = item.parentElement;
+        const parentTask = item.parentElement.parentElement;
         const taskId = parseInt(parentTask.id);
         const task = taskManager.getTaskById(taskId);
         task.status = 'DONE';
         taskManager.save();
-        taskManager.load();
         taskManager.render();
 
         // const btn = document.querySelector('.done-button');
         // if()
+    }
+
+    if(item.classList.contains('delete-button')){
+        const parentTask = item.parentElement.parentElement;
+        const taskId = parseInt(parentTask.id);
+        const task = taskManager.getTaskById(taskId);
+        taskManager.deleteTask(taskId);
+        taskManager.save();
+        taskManager.render();
+
     }
 
     
