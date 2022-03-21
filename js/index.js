@@ -80,8 +80,8 @@ taskList.addEventListener('click',function(event){
         const task = taskManager.getTaskById(taskId);
         task.status = 'DONE';
         taskManager.save();
-        taskManager.render();
         taskManager.load();
+        taskManager.render();
 
         // const btn = document.querySelector('.done-button');
         // if()
