@@ -6,7 +6,6 @@ const assignedInput = document.querySelector('#assigned');
 // const assigned = assignedInput.value;
 const dueDateInput = document.querySelector('#due_date');
 // const dueDate = dueDateInput.value;
-const statusInput = document.querySelector('#status');
 // const status = statusInput.value;
 const alert = document.querySelector('#alert');
 const newTaskForm = document.getElementById('form');
@@ -78,6 +77,7 @@ taskList.addEventListener('click',function(event){
         const task = taskManager.getTaskById(taskId);
         task.status = 'DONE';
         taskManager.save();
+task9completed
         // taskManager.load();
         taskManager.render();
 

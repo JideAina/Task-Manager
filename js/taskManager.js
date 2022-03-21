@@ -117,6 +117,9 @@ class TaskManager {
         this.currentId = JSON.parse(currentId);
     }
 
+
+
+
     deleteTask(taskId){
         let newTasks = [];
         for (let i = 0; i < this.tasks.length; i++){
