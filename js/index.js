@@ -77,6 +77,8 @@ taskList.addEventListener('click',function(event){
         const task = taskManager.getTaskById(taskId);
         task.status = 'DONE';
         taskManager.save();
+task9completed
+        // taskManager.load();
         taskManager.render();
 
         // const btn = document.querySelector('.done-button');
