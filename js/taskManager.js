@@ -1,18 +1,43 @@
 const createTaskHtml = (name,description,assigned,date,status,id) => {
-    const html = `
-    <li class="list-group-item w-25 mb-3" id=${id}>
-        <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
-            <h5>${name}</h5>
-            <span class="badge badge-danger">${status}</span>
-        </div>
-        <div class="d-flex w-100 mb-3 justify-content-between">
-            <small>Assigned To: ${assigned}</small>
-            <small>Due: ${date}</small>
-        </div>
-        <p>${description}</p>
-        <button class="done-button btn btn-primary" type="button">Mark As Done</button>
-    </li>
-    `
+    let html;
+    if (status !== "TODO"){
+        html = `
+        <li class="list-group-item w-25 mb-3" id=${id}>
+            <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
+                <h5>${name}</h5>
+                <span class="badge badge-success">${status}</span>
+            </div>
+            <div class="d-flex w-100 mb-3 justify-content-between">
+                <small>Assigned To: ${assigned}</small>
+                <small>Due: ${date}</small>
+            </div>
+            <p>${description}</p>
+            
+            <div class="d-flex w-100 mb-3 justify-content-end">
+                <button class="done-button btn btn-primary invisible" type="button">Mark As Done</button>
+                <button class="delete-button btn btn-danger ml-1" type="button">Delete Task</button>
+            </div>
+        </li>
+        `
+    }else{
+        html = `
+        <li class="list-group-item w-25 mb-3" id=${id}>
+            <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
+                <h5>${name}</h5>
+                <span class="badge badge-danger">${status}</span>
+            </div>
+            <div class="d-flex w-100 mb-3 justify-content-between">
+                <small>Assigned To: ${assigned}</small>
+                <small>Due: ${date}</small>
+            </div>
+            <p>${description}</p>
+            <div class="d-flex w-100 mb-3 justify-content-end">
+                <button class="done-button btn btn-primary" type="button">Mark As Done</button>
+                <button class="delete-button btn btn-danger ml-1" type="button">Delete Task</button>
+            </div>
+        </li>
+        `
+    }
     return html;
 }
 
@@ -86,10 +111,28 @@ class TaskManager {
     }
 
     load(){
+<<<<<<< HEAD
         localStorage.getItem('tasks', this.tasks);
         this.tasks = JSON.parse(localStorage.getItem('tasks'));
         localStorage.getItem('currentId', this.currentId);
         this.currentId = JSON.parse(localStorage.getItem('currentId'));
+=======
+        let taskJson = localStorage.getItem('tasks');
+        this.tasks = JSON.parse(taskJson);
+        let currentId = localStorage.getItem('currentId');
+        this.currentId = JSON.parse(currentId);
+    }
+    deleteTask(taskId){
+        let newTasks = [];
+        for (let i = 0; i < this.tasks.length; i++){
+            let task = this.tasks[i];
+            if(taskId !== task.id){
+                newTasks.push(task);
+            }
+        }
+
+        this.tasks = newTasks;
+>>>>>>> 7687d61966ecc0ceb7bbd8b40347819749f7640e
     }
 }
 
