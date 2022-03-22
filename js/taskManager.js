@@ -2,7 +2,7 @@ const createTaskHtml = (name,description,assigned,date,status,id) => {
     let html;
     if (status !== "TODO"){
         html = `
-        <li class="list-group-item w-25 mb-3" id=${id}>
+        <li class="list-group-item w-50 mb-3" id=${id}>
             <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
                 <h5>${name}</h5>
                 <span class="badge badge-success">${status}</span>
@@ -21,7 +21,7 @@ const createTaskHtml = (name,description,assigned,date,status,id) => {
         `
     }else{
         html = `
-        <li class="list-group-item w-25 mb-3" id=${id}>
+        <li class="list-group-item w-50 mb-3" id=${id}>
             <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
                 <h5>${name}</h5>
                 <span class="badge badge-danger">${status}</span>
@@ -111,12 +111,6 @@ class TaskManager {
     }
 
     load(){
-<<<<<<< HEAD
-        localStorage.getItem('tasks', this.tasks);
-        this.tasks = JSON.parse(localStorage.getItem('tasks'));
-        localStorage.getItem('currentId', this.currentId);
-        this.currentId = JSON.parse(localStorage.getItem('currentId'));
-=======
         let taskJson = localStorage.getItem('tasks');
         this.tasks = JSON.parse(taskJson);
         let currentId = localStorage.getItem('currentId');
@@ -136,7 +130,6 @@ class TaskManager {
         }
 
         this.tasks = newTasks;
->>>>>>> 7687d61966ecc0ceb7bbd8b40347819749f7640e
     }
 }
 
