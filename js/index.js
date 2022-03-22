@@ -77,7 +77,7 @@ taskList.addEventListener('click',function(event){
         const task = taskManager.getTaskById(taskId);
         task.status = 'DONE';
         taskManager.save();
-task9completed
+        // task9completed
         // taskManager.load();
         taskManager.render();
 
@@ -97,6 +97,7 @@ task9completed
 
     
 });
+
 
 
 
