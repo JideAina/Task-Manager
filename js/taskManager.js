@@ -111,21 +111,11 @@ class TaskManager {
     }
 
     load(){
-<<<<<<< HEAD
-        localStorage.getItem('tasks', this.tasks);
-        this.tasks = JSON.parse(localStorage.getItem('tasks'));
-        localStorage.getItem('currentId', this.currentId);
-        this.currentId = JSON.parse(localStorage.getItem('currentId'));
-=======
         let taskJson = localStorage.getItem('tasks');
         this.tasks = JSON.parse(taskJson);
         let currentId = localStorage.getItem('currentId');
         this.currentId = JSON.parse(currentId);
     }
-
-
-
-
     deleteTask(taskId){
         let newTasks = [];
         for (let i = 0; i < this.tasks.length; i++){
@@ -136,7 +126,6 @@ class TaskManager {
         }
 
         this.tasks = newTasks;
->>>>>>> 7687d61966ecc0ceb7bbd8b40347819749f7640e
     }
 }
 
