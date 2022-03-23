@@ -24,3 +24,25 @@ body{
 .hide-alert {
     display: none;
 }
+
+h1.title {
+    font-weight: 400;
+}
+
+p.lead {
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: 50;
+}
+
+#name {
+    font-weight: 50;
+}
+
+.description {
+    font-style: italic;
+}
+
+.assigned {
+    font-size: large;
+}
