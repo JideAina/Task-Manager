@@ -18,9 +18,14 @@ const expect = require('chai').expect;
 describe('addTask',() => {
     it('adds tasks to the task manager',() => {
         TaskManager.tasks = [];
-        TaskManager.addTask(name = 'dave',description  = 'find john wick',assigned = 'anyone',date = 2015,status = 'failed');
-        //console.log(TaskManager.tasks);
-        expect(TaskManager.tasks).to.deep.include([{name: 'dave',description: 'find john wick'}]);    
+        TaskManager.addTask(name = 'dave',description  = 'find john wick');
+        console.log(TaskManager.tasks);
+        assert.deepEqual(TaskManager.tasks , [{id: NaN,
+            name: 'dave',
+            description: 'find john wick',
+            assignedTo: undefined,
+            date: undefined,
+            status: 'TODO'}]);    
     })
 });
 
@@ -43,5 +48,13 @@ describe('deleteTask',()=>{
 
 describe('getTaskById',()=>{
     it('selects the task from the task manager',()=>{
+        TaskManager.tasks = [{id: 1, name:'dave',description:'find john wick',assigned:'anyone',date:2015,status:'failed'}];
+        let task1 = TaskManager.tasks;
+        const task2 = TaskManager.addTask(name = 'mike',description  = 'run',assigned = 'him',date = 2015,status = 'escaped');
+        // console.log(task1);
+        // console.log(task2);
+        assert.ok(TaskManager.getTaskById(2)  === task2);
+
+
     })
 });
