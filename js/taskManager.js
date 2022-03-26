@@ -54,7 +54,7 @@ class TaskManager {
 
   
     
-    static addTask(name,description,assigned,date,status = "TODO"){
+    addTask(name,description,assigned,date,status = "TODO"){
         this.currentId++;
         const newTask = {
             id: this.currentId,
@@ -90,7 +90,7 @@ class TaskManager {
     
 
 
-    static getTaskById(taskId){
+    getTaskById(taskId){
         let foundTask;
         for (let i = 0; i < this.tasks.length; i++){
             let task = this.tasks[i];
@@ -115,7 +115,7 @@ class TaskManager {
         let currentId = localStorage.getItem('currentId');
         this.currentId = JSON.parse(currentId);
     }
-    static  deleteTask(taskId){
+    deleteTask(taskId){
         let newTasks = [];
         for (let i = 0; i < this.tasks.length; i++){
             let task = this.tasks[i];
