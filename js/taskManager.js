@@ -2,7 +2,7 @@ const createTaskHtml = (name,description,assigned,date,status,id) => {
     let html;
     if (status !== "TODO"){
         html = `
-        <li class="list-group-item w-100 mb-3" id=${id}>
+        <li class="list-group-item w-50 mb-3" id=${id}>
             <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
                 <h5>${name}</h5>
                 <span class="badge badge-success">${status}</span>
@@ -21,7 +21,7 @@ const createTaskHtml = (name,description,assigned,date,status,id) => {
         `
     }else{
         html = `
-        <li class="list-group-item w-100 mb-3" id=${id}>
+        <li class="list-group-item w-50 mb-3" id=${id}>
             <div class="d-flex w-100 mt-2 justify-content-between align-items-center">
                 <h5>${name}</h5>
                 <span class="badge badge-danger">${status}</span>
